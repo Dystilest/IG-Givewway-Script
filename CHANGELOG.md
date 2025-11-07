@@ -1,9 +1,49 @@
 # Changelog
 
-All notable changes to the InstantGaming Giveaway Automator will be documented in this file.
+All notable changes to the InstantGaming Social Rewards Automator will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [1.2.0] - 2025-01-XX
+
+### 🔄 Major Simplification
+- **BREAKING:** Removed all features except Social Media Integration
+- **REMOVED:** Bulk link opening functionality (links preserved in README for manual use)
+- **REMOVED:** Automatic giveaway entry system (`executeJoinAction`)
+- **REMOVED:** Detection evasion code (timing variation, natural actions, realistic click events)
+- **REMOVED:** Link activation features
+- **REMOVED:** Retry mechanisms and attempt tracking
+- **REMOVED:** Memory cleanup handlers (no longer needed)
+- **REMOVED:** Settings: `actionInterval`, `enableTimingVariation`, `enableNaturalActions`, `maxAttempts`, `attemptInterval`
+
+### ✨ Simplified Features
+- **KEPT:** Social media reward automation (`processSocialRewards`)
+- **KEPT:** Settings: `enableSocialTasks`, `displayAlerts`
+- **KEPT:** Console logging and notifications
+- **KEPT:** Referral link injection (giveaway pages only, once per session)
+
+### 📝 Documentation
+- Updated README to version 1.2.0
+- Removed all references to bulk opening, automatic entry, and detection evasion
+- Simplified feature list to focus on social rewards only
+- Kept curated giveaway links for manual reference
+- Updated browser compatibility section
+
+### 🎯 Focus
+- Single-purpose tool: Social Media Reward Automation only
+- Streamlined codebase: ~120 lines (down from ~480 lines)
+- Cleaner user experience with 3 simple menu commands
+- No complex timing or detection evasion code
+
+### ⚠️ Breaking Changes
+- All bulk opening features removed
+- Automatic entry system removed
+- Detection evasion features removed
+- Most menu commands removed (kept only 3)
+- Script now only provides social reward automation
 
 ---
 
