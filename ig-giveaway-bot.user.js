@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InstantGaming Giveaway Automator
 // @description  Advanced automation tool for InstantGaming prize draws featuring intelligent detection evasion and natural interaction patterns.
-// @version      1.1.3
+// @version      1.1.4
 // @author       Dystilest
 // @namespace    https://github.com/Dystilest
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -367,32 +367,38 @@
     }
   }
 
-  function bulkOpenLinks() {
+  async function bulkOpenLinks() {
     try {
       const MAX_TABS = 25; // Safety limit to prevent browser overload
-      const linkCollection = document.querySelectorAll('#user-content-giveaways>a');
-      
-      if (linkCollection.length === 0) {
-        displayNotification('Notice', 'No giveaway links detected. Confirm you are viewing the GitHub giveaway collection.', 'warning');
+      const RAW_LINKS_URL = 'https://raw.githubusercontent.com/Dystilest/IG-Givewway-Script/main/links.md';
+
+      writeLog('Fetching curated giveaway links from links.md ...', 'info');
+      const response = await fetch(RAW_LINKS_URL, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch links.md (status ${response.status})`);
+      }
+      const text = await response.text();
+
+      // Extract href URLs pointing to Instant-Gaming giveaway pages
+      const hrefMatches = Array.from(text.matchAll(/href\s*=\s*"(https?:\/\/www\.instant-gaming\.com\/[^"]*\/giveaway\/[^"]*)"/gi));
+      const hrefs = hrefMatches.map(m => m[1]);
+
+      if (hrefs.length === 0) {
+        displayNotification('Notice', 'No giveaway links found in links.md', 'warning');
         return;
       }
-      
-      // Limit number of tabs for safety
-      const linksToOpen = Array.from(linkCollection).slice(0, MAX_TABS);
-      const skippedCount = linkCollection.length - linksToOpen.length;
-      
+
+      const linksToOpen = hrefs.slice(0, MAX_TABS);
+      const skippedCount = hrefs.length - linksToOpen.length;
       if (skippedCount > 0) {
-        displayNotification('Rate Limit', `Opening ${MAX_TABS} tabs (${skippedCount} skipped for safety)`, 'warning');
+        displayNotification('Rate Limit', `Opening ${linksToOpen.length} tabs (${skippedCount} skipped for safety)`, 'warning');
       }
-      
-      linksToOpen.forEach((linkElement, position) => {
-        // Stagger tab opening to prevent browser restrictions
-        setTimeout(() => {
-          launchNewTab(linkElement.href);
-        }, position * 100);
+
+      linksToOpen.forEach((url, position) => {
+        setTimeout(() => launchNewTab(url), position * 100);
       });
-      
-      displayNotification('Bulk Operation', `Launching ${linksToOpen.length} giveaway(s) in separate tabs`, 'success');
+
+      displayNotification('Bulk Operation', `Launching ${linksToOpen.length} giveaway(s) from links.md`, 'success');
     } catch (exception) {
       writeLog(`Bulk link opening error: ${exception.message}`, 'error');
     }
@@ -453,23 +459,18 @@
   }
 
   // Command registration in userscript menu (context-aware)
-  GM_registerMenuCommand("🎯 Manual Entry", executeJoinAction);
+  // Put bulk open at the top for quick access when on the repository page
+  const isRepoPage = window.location.hostname === "github.com" && window.location.pathname.startsWith("/Dystilest/IG-Givewway-Script");
+  if (isRepoPage) {
+    GM_registerMenuCommand("🔗 Bulk Open Links", bulkOpenLinks); // Opens curated links from links.md (manual only)
+  }
+  // Core controls
   GM_registerMenuCommand("📱 Process Social Rewards", processSocialRewards);
   GM_registerMenuCommand("⚙️ Switch Social Tasks Mode", switchSocialTasksMode);
   GM_registerMenuCommand("🔔 Switch Alert Display", switchAlertDisplay);
   GM_registerMenuCommand("🎲 Switch Timing Variation", switchTimingVariation);
   GM_registerMenuCommand("🤖 Switch Natural Actions", switchNaturalActions);
   GM_registerMenuCommand("⏱️ Modify Action Interval", modifyActionInterval);
-
-  // Context-specific (only register where the feature can actually function)
-  const isRepoPage = window.location.hostname === "github.com" && window.location.pathname.startsWith("/Dystilest/IG-Givewway-Script");
-  if (isRepoPage) {
-    GM_registerMenuCommand("🔗 Bulk Open Links", bulkOpenLinks); // Manual-only bulk open of curated giveaway list
-  }
-  const isGiveawayListingPage = window.location.hostname === "www.instant-gaming.com" && /\/giveaways/.test(window.location.pathname);
-  if (isGiveawayListingPage) {
-    GM_registerMenuCommand("📋 Activate Giveaway Links", activateGiveawayLinks); // Only useful on listing pages
-  }
 
   // Removed automatic bulk opening: now strictly manual to avoid unexpected tab spawning
   // (v1.1.3 change)

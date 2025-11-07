@@ -1,14 +1,45 @@
+## 🎯 Curated Giveaway Links (links.md)
+
+Below is the current curated set of InstantGaming giveaway URLs (first 25 opened when using Bulk Open):
+<!-- START: Curated Links Extract -->
+<!-- (List truncated to first 25 for readability; bulk opener fetches full file) -->
+1. https://www.instant-gaming.com/fr/giveaway/BOBLENNON?igr=jaha
+2. https://www.instant-gaming.com/fr/giveaway/INSTANTGAMING?igr=jaha
+3. https://www.instant-gaming.com/fr/giveaway/SUPREMELEADER?igr=jaha
+4. https://www.instant-gaming.com/fr/giveaway/ICONOBLAST?igr=jaha
+5. https://www.instant-gaming.com/fr/giveaway/bugland?igr=jaha
+6. https://www.instant-gaming.com/fr/giveaway/GAMEMOVIELAND?igr=jaha
+7. https://www.instant-gaming.com/fr/giveaway/CODQG?igr=jaha
+8. https://www.instant-gaming.com/fr/giveaway/NALFEINN?igr=jaha
+9. https://www.instant-gaming.com/fr/giveaway/VARG?igr=jaha
+10. https://www.instant-gaming.com/fr/giveaway/skyyart?igr=jaha
+11. https://www.instant-gaming.com/fr/giveaway/ALKOR?igr=jaha
+12. https://www.instant-gaming.com/fr/giveaway/ROBERT?igr=jaha
+13. https://www.instant-gaming.com/fr/giveaway/GAMEWAVE?igr=jaha
+14. https://www.instant-gaming.com/fr/giveaway/RATSUPER?igr=jaha
+15. https://www.instant-gaming.com/fr/giveaway/YANKA?igr=jaha
+16. https://www.instant-gaming.com/fr/giveaway/STREAMRUNNERS?igr=jaha
+17. https://www.instant-gaming.com/fr/giveaway/MeetTheMyth?igr=jaha
+18. https://www.instant-gaming.com/fr/giveaway/PHENRIR?igr=jaha
+19. https://www.instant-gaming.com/fr/giveaway/GMODFR?igr=jaha
+20. https://www.instant-gaming.com/fr/giveaway/INSTANTGAMINGES?igr=jaha
+21. https://www.instant-gaming.com/fr/giveaway/ACRE?igr=jaha
+22. https://www.instant-gaming.com/fr/giveaway/BILLYCHEROKEE?igr=jaha
+23. https://www.instant-gaming.com/fr/giveaway/LYNX?igr=jaha
+24. https://www.instant-gaming.com/fr/giveaway/ZONALEROS?igr=jaha
+25. https://www.instant-gaming.com/fr/giveaway/GUIGUI?igr=jaha
+<!-- END: Curated Links Extract -->
 # InstantGaming Giveaway Automator
 
 > **Intelligent automation for InstantGaming prize draws with sophisticated detection evasion**
 
-[![Version](https://img.shields.io/badge/version-1.1.3-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
+[![Version](https://img.shields.io/badge/version-1.1.4-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Userscript](https://img.shields.io/badge/userscript-Tampermonkey%20%7C%20Violentmonkey-orange.svg)](https://www.tampermonkey.net/)
 
 An advanced userscript designed for InstantGaming prize draw automation, featuring organic behavior simulation, variable timing patterns, intelligent retry mechanisms, and enhanced anti-detection capabilities.
 
-**Latest Update (v1.1.3):** Bulk link opening is now strictly manual (no automatic tab spawning on repository pages); context-aware menu shows bulk/listing actions only where applicable; removed deprecated Auto-Join toggle.
+**Latest Update (v1.1.4):** Bulk opener now fetches curated giveaway URLs directly from `links.md`; Manual Entry & Activate Links commands removed; Bulk Open prioritized and still rate-limited/staggered.
 
 ---
 
@@ -112,10 +143,8 @@ Access controls via Tampermonkey/Violentmonkey menu (extension icon):
 
 | Command | Function |
 |---------|----------|
-| 🎯 **Manual Entry** | Manually trigger entry submission on current page |
-| 📱 **Process Social Rewards** | Process all social reward requirements |
-| 📋 **Activate Giveaway Links** | Click all giveaway links on current page (listing pages) |
-| 🔗 **Bulk Open Links** | Open curated GitHub giveaway links in new tabs (manual only; no auto on repo pages) |
+| 🔗 **Bulk Open Links** | Fetch & open curated giveaway URLs from `links.md` (up to 25, staggered) |
+| 📱 **Process Social Rewards** | Process social reward buttons on current giveaway page |
 | ⚙️ **Switch Social Tasks Mode** | Toggle automatic social processing |
 | 🔔 **Switch Alert Display** | Toggle desktop notifications |
 | 🎲 **Switch Timing Variation** | Toggle random timing patterns |
@@ -130,7 +159,6 @@ Access controls via Tampermonkey/Violentmonkey menu (extension icon):
 
 ```javascript
 Action Interval:      2000ms (customizable, 1000-60000ms range)
-Auto-Join:            Enabled
 Social Tasks:         Enabled
 Notifications:        Enabled
 Timing Variation:     Enabled (Normal distribution, ±30% std dev)
@@ -202,7 +230,7 @@ The script incorporates multiple advanced stealth features:
 
 1. **Inspect Console** - Open F12, check for color-coded messages
 2. **Confirm Page Type** - Verify you're on an InstantGaming giveaway page
-3. **Try Manual Mode** - Use "Manual Entry" from menu
+3. **Use Bulk Open** - From repository page to open curated giveaways (optional)
 4. **Adjust Timing** - Slower connections may need 3000-5000ms intervals
 5. **Verify Browser** - OperaGX is not compatible
 
@@ -253,12 +281,17 @@ IG-Givewway-Script/
 
 The script auto-updates via Tampermonkey/Violentmonkey when new releases are published.
 
-**Current Release:** 1.1.3
+**Current Release:** 1.1.4
+
+**What's New in v1.1.4:**
+- 🔗 Bulk opener parses raw `links.md` for giveaway URLs
+- 🧹 Removed Manual Entry & Activate Links commands from menu
+- 🚀 Bulk Open moved to top; still rate-limited & staggered
+- 📄 README includes curated links snapshot
 
 **What's New in v1.1.3:**
-- 🔗 Bulk link opening is manual-only (no auto open on repo pages)
-- 🧭 Context-aware menu: shows Bulk Open and Activate Links only when relevant
-- 🧹 Removed deprecated Auto-Join toggle from menu
+- Manual-only bulk opening & context-aware menu adjustments
+- Removal of Auto-Join toggle
 
 **What's New in v1.1.0:**
 - 🔒 Enhanced security: Referral only on giveaway pages

@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.4] - 2025-11-07
+
+### Added
+- Bulk Open now fetches curated giveaway URLs directly from raw `links.md` (regex extraction of InstantGaming giveaway hrefs).
+
+### Changed
+- Menu streamlined: removed Manual Entry and Activate Giveaway Links commands; Bulk Open placed at top.
+- Bulk Open description clarified (manual-only, 25 tab safety limit retained, staggered launch).
+
+### Documentation
+- README updated: version badge 1.1.4, latest update text, curated links snapshot (first 25), removed deprecated command rows.
+
+### Internal
+- Simplified settings (Auto-Join concept fully removed previously; reinforced no dependency).
+- Fetch-based link parsing avoids DOM reliance on GitHub rendering structure.
+
+### Safety
+- Maintains 25-tab limit and staggered open (100ms increments) to reduce browser blocking.
+
+---
+
 ## [1.1.3] - 2025-11-07
 
 ### Changed
