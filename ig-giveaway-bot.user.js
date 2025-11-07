@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InstantGaming Giveaway Automator
 // @description  Advanced automation tool for InstantGaming prize draws featuring intelligent detection evasion and natural interaction patterns.
-// @version      1.1.0
+// @version      1.1.1
 // @author       Dystilest
 // @namespace    https://github.com/Dystilest
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -212,19 +212,30 @@
       // Perform natural activity simulation prior to interaction
       emulateNaturalActivity();
       
-      // Try multiple selectors for robustness
+      // Try multiple selectors for robustness - ordered from most specific to most general
       const selectors = [
         "button.button.validate",
         "button[class*='validate']",
         "button.validate",
-        "button[type='submit'].button"
+        "button[type='submit'].button",
+        "button[type='submit']",
+        ".giveaway-participate button",
+        ".participate-button",
+        "button[class*='participate']",
+        "form button[type='submit']",
+        "button.btn-primary",
+        "button.primary"
       ];
       
       let entryButton = null;
+      let successSelector = null;
+      
+      // First pass: try each selector with shorter timeout
       for (const selector of selectors) {
         try {
-          entryButton = await awaitElement(selector, 2000);
+          entryButton = await awaitElement(selector, 1500);
           if (entryButton) {
+            successSelector = selector;
             writeLog(`Found entry button using selector: ${selector}`, 'success');
             break;
           }
@@ -232,6 +243,29 @@
           // Try next selector
           continue;
         }
+      }
+      
+      // Second pass: if nothing found, try a longer wait on the primary selector
+      if (!entryButton) {
+        writeLog('First pass failed, trying longer wait on primary selector...', 'warning');
+        try {
+          entryButton = await awaitElement(selectors[0], 5000);
+          if (entryButton) {
+            successSelector = selectors[0];
+            writeLog(`Found entry button on second attempt`, 'success');
+          }
+        } catch (e) {
+          // Will handle below
+        }
+      }
+      
+      // Debug: Log all buttons on the page if still not found
+      if (!entryButton) {
+        const allButtons = document.querySelectorAll('button');
+        writeLog(`DEBUG: Found ${allButtons.length} button(s) on page`, 'warning');
+        allButtons.forEach((btn, idx) => {
+          writeLog(`Button ${idx + 1}: classes="${btn.className}", type="${btn.type}", text="${btn.textContent.trim().substring(0, 30)}"`, 'info');
+        });
       }
       
       if (entryButton) {
