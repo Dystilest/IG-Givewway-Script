@@ -2,11 +2,13 @@
 
 > **Intelligent automation for InstantGaming prize draws with sophisticated detection evasion**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Userscript](https://img.shields.io/badge/userscript-Tampermonkey%20%7C%20Violentmonkey-orange.svg)](https://www.tampermonkey.net/)
 
-An advanced userscript designed for InstantGaming prize draw automation, featuring organic behavior simulation, variable timing patterns, and intelligent retry mechanisms.
+An advanced userscript designed for InstantGaming prize draw automation, featuring organic behavior simulation, variable timing patterns, intelligent retry mechanisms, and enhanced anti-detection capabilities.
+
+**Latest Update (v1.1.0):** Major security and anti-detection improvements including realistic click simulation, normal distribution timing, enhanced natural behavior, and memory leak prevention.
 
 ---
 
@@ -25,10 +27,11 @@ An advanced userscript designed for InstantGaming prize draw automation, featuri
 - **Smart Retry Logic** - Automatically retries up to 3 times with intelligent backoff
 
 ### 🛡️ Detection Evasion
-- **Variable Timing** - Random delays (500-2000ms variance) to simulate human patterns
-- **Authentic Events** - Uses genuine browser events rather than simple programmatic clicks
-- **Organic Behavior** - Random scrolling and natural interaction simulation
+- **Variable Timing** - Normal distribution delays (realistic human-like patterns)
+- **Authentic Events** - Uses genuine browser events with realistic coordinates
+- **Organic Behavior** - Variable scrolling patterns and natural interaction simulation
 - **Distributed Actions** - Staggers multiple interactions to prevent pattern detection
+- **Fallback Mechanisms** - Multiple selector strategies for reliability
 
 ### ⚙️ Customization Options
 - **Flexible Settings** - Customize intervals, toggle features, adjust behavior
@@ -58,17 +61,11 @@ Select the appropriate extension for your browser:
 
 ### Step 2: Install Userscript
 
-**Variant A: With Referral Support (Recommended)**
-```
-Supports the developer through affiliate tracking
-```
+Click the link below to install the script:
+
 [📥 **Install ig-giveaway-bot.user.js**](https://github.com/Dystilest/IG-Givewway-Script/raw/main/ig-giveaway-bot.user.js)
 
-**Variant B: Direct Version**
-```
-Clean functionality without any referral tracking
-```
-[📥 **Install ig-giveaway-bot-direct.user.js**](https://github.com/Dystilest/IG-Givewway-Script/raw/main/ig-giveaway-bot-direct.user.js)
+**Note:** This version includes referral support (`igr=ramsesii`) which helps support the developer. The referral parameter is only added once per session and only on giveaway pages, never on catalog or checkout pages.
 
 ### Step 3: Usage
 
@@ -82,12 +79,14 @@ Clean functionality without any referral tracking
 
 ### Automatic Operation (Default)
 
-The script executes automatically on giveaway pages:
+The script executes automatically on giveaway pages only:
 
-1. **Detection Phase** - Locates entry button with smart waiting
-2. **Entry Submission** - Submits entry with natural timing variation
+1. **Detection Phase** - Locates entry button with smart waiting and fallback selectors
+2. **Entry Submission** - Submits entry with realistic timing and click coordinates
 3. **Social Processing** - Automatically handles social reward buttons
 4. **Status Reporting** - Logs all actions and displays notifications
+
+**Security:** The script only runs on giveaway-specific URLs for your safety.
 
 ### Manual Operation
 
@@ -113,14 +112,16 @@ Access controls via Tampermonkey/Violentmonkey menu (extension icon):
 ### Default Parameters
 
 ```javascript
-Action Interval:      2000ms (customizable)
+Action Interval:      2000ms (customizable, 1000-60000ms range)
 Auto-Join:            Enabled
 Social Tasks:         Enabled
 Notifications:        Enabled
-Timing Variation:     Enabled (500-2000ms variance)
-Natural Actions:      Enabled
+Timing Variation:     Enabled (Normal distribution, ±30% std dev)
+Natural Actions:      Enabled (Variable scroll patterns)
 Max Attempts:         3 retries
 Attempt Interval:     2500ms
+Rate Limiting:        25 tabs max for bulk operations
+Fallback Selectors:   4 button selector alternatives
 ```
 
 ### Optimization
@@ -139,13 +140,16 @@ All settings persist automatically and can be modified via menu commands.
 
 ### Implementation Details
 
-The script incorporates multiple stealth features:
+The script incorporates multiple advanced stealth features:
 
-1. **Variable Timing** - No two interactions share identical timing
-2. **Authentic Events** - Uses `MouseEvent` API for genuine clicks
-3. **Organic Simulation** - Random scrolling with natural patterns
+1. **Normal Distribution Timing** - Uses Box-Muller transform for Gaussian timing patterns (more human-like than uniform random)
+2. **Realistic Click Events** - Includes clientX/Y coordinates within 30-70% of element bounds
+3. **Variable Behavior Patterns** - 4 different scroll patterns (none/small/medium/large) with weighted probabilities
 4. **Distributed Processing** - Prevents rapid-fire interaction patterns
-5. **Intelligent Retry** - Gracefully handles slow page rendering
+5. **Intelligent Retry** - Gracefully handles slow page rendering with exponential backoff
+6. **Fallback Selectors** - Multiple button detection strategies prevent breakage
+7. **Memory Management** - Cleanup handlers prevent detection via resource monitoring
+8. **Restricted Permissions** - Only runs on giveaway pages, not entire site
 
 ### Risk Evaluation
 
@@ -155,6 +159,7 @@ The script incorporates multiple stealth features:
 | 10-20 entries/day | 🟡 Low | Consider slight interval increase |
 | 50+ entries/day | 🟠 Moderate | Use sparingly, blend with manual entries |
 | Timing variation disabled | 🔴 High | Always keep randomization ENABLED |
+| Bulk operations (25+ tabs) | 🟠 Moderate | Rate limited to 25 for safety |
 
 ### Recommended Practices
 
@@ -163,12 +168,14 @@ The script incorporates multiple stealth features:
 - Combine automated with manual entries
 - Use appropriate intervals (2000ms+)
 - Be selective about giveaway participation
+- Monitor console for any warnings or errors
 
 ❌ **Don't:**
 - Process 100+ giveaways in single session
-- Disable randomization mechanisms
+- Disable timing variation or natural actions
 - Enter every available giveaway
-- Configure intervals below 1000ms
+- Configure intervals below 1000ms (enforced minimum)
+- Try to bypass the 25-tab bulk limit
 
 ---
 
@@ -229,7 +236,17 @@ IG-Givewway-Script/
 
 The script auto-updates via Tampermonkey/Violentmonkey when new releases are published.
 
-**Current Release:** 1.0.0
+**Current Release:** 1.1.0
+
+**What's New in v1.1.0:**
+- 🔒 Enhanced security: Referral only on giveaway pages
+- 🎯 Realistic click events with proper coordinates
+- 📊 Normal distribution timing (Box-Muller transform)
+- 🎲 Variable scroll patterns (4 behavior types)
+- 🛡️ Memory leak prevention with cleanup handlers
+- 🔍 Fallback selectors for better reliability
+- ⚡ Rate limiting (25 tab max) for safety
+- ✅ Input validation (1000-60000ms enforced)
 
 ---
 
