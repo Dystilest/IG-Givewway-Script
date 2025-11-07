@@ -16,6 +16,24 @@ An advanced userscript designed for InstantGaming prize draw automation, featuri
 
 **OperaGX is not supported.** Please use Firefox, Chrome, Edge, or other Chromium-based browsers for optimal performance.
 
+### Recommended Browsers
+
+| Browser | Compatibility | Notes |
+|---------|--------------|-------|
+| **Firefox** | ✅ Excellent | Native userscript support, best privacy |
+| **Chrome** | ✅ Excellent | Standard Chromium, reliable extensions |
+| **Edge** | ✅ Excellent | Chromium-based, Microsoft support |
+| **Brave** | ✅ Good | Chromium-based, privacy-focused |
+| **Vivaldi** | ✅ Good | Chromium-based, power user features |
+| **Opera** | ⚠️ Mixed | Sometimes works but can be unstable |
+| **OperaGX** | ❌ Not Compatible | Custom framework breaks userscript managers |
+
+**Why OperaGX doesn't work:**
+- Modified Chromium framework interferes with Tampermonkey/Violentmonkey
+- GM_* APIs (`GM_getValue`, `GM_notification`) don't function properly
+- Aggressive RAM limiting can terminate scripts mid-execution
+- Custom extension system incompatible with standard userscripts
+
 ---
 
 ## ✨ Core Features
