@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InstantGaming Giveaway Automator
 // @description  Advanced automation tool for InstantGaming prize draws featuring intelligent detection evasion and natural interaction patterns.
-// @version      1.1.2
+// @version      1.1.3
 // @author       Dystilest
 // @namespace    https://github.com/Dystilest
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -50,7 +50,6 @@
     // Settings Configuration Object
     const SETTINGS = {
       actionInterval: GM_getValue('actionInterval', 2000),
-      enableAutoJoin: GM_getValue('enableAutoJoin', true),
       enableSocialTasks: GM_getValue('enableSocialTasks', true),
       displayAlerts: GM_getValue('displayAlerts', true),
       maxAttempts: 3,
@@ -214,8 +213,8 @@
       
       // Try multiple selectors for robustness - ordered from most specific to most general
       const selectors = [
-        "button.validate",                    // FIXED: removed .button prefix
         "button.button.validate",
+        "button.validate",
         "button[class*='validate']",
         "button[type='submit'].button",
         "button[type='submit']",
@@ -400,11 +399,6 @@
   }
 
   // Settings management functions
-  function switchAutoJoinMode() {
-    SETTINGS.enableAutoJoin = !SETTINGS.enableAutoJoin;
-    GM_setValue('enableAutoJoin', SETTINGS.enableAutoJoin);
-    displayNotification('Configuration', `Auto-join mode ${SETTINGS.enableAutoJoin ? 'activated' : 'deactivated'}`, 'info');
-  }
 
   function switchSocialTasksMode() {
     SETTINGS.enableSocialTasks = !SETTINGS.enableSocialTasks;
@@ -458,25 +452,26 @@
     displayNotification('Configuration', `Action interval set to ${SETTINGS.actionInterval}ms`, 'success');
   }
 
-  // Command registration in userscript menu
+  // Command registration in userscript menu (context-aware)
   GM_registerMenuCommand("🎯 Manual Entry", executeJoinAction);
   GM_registerMenuCommand("📱 Process Social Rewards", processSocialRewards);
-  GM_registerMenuCommand("📋 Activate Giveaway Links", activateGiveawayLinks);
-  GM_registerMenuCommand("🔗 Bulk Open Links", bulkOpenLinks);
-  GM_registerMenuCommand("⚙️ Switch Auto-Join Mode", switchAutoJoinMode);
   GM_registerMenuCommand("⚙️ Switch Social Tasks Mode", switchSocialTasksMode);
   GM_registerMenuCommand("🔔 Switch Alert Display", switchAlertDisplay);
   GM_registerMenuCommand("🎲 Switch Timing Variation", switchTimingVariation);
   GM_registerMenuCommand("🤖 Switch Natural Actions", switchNaturalActions);
   GM_registerMenuCommand("⏱️ Modify Action Interval", modifyActionInterval);
 
-  // Automatic execution when page loads
-  if (SETTINGS.enableAutoJoin && document.location.href.includes('giveaway')) {
-    writeLog('Auto-join mode active, initiating process...', 'info');
-    // Allow page to fully render with organic timing variation
-    const startupDelay = calculateVariedTiming(1500);
-    writeLog(`Commencing operation in ${startupDelay}ms (natural delay applied)...`, 'info');
-    setTimeout(() => executeJoinAction(), startupDelay);
+  // Context-specific (only register where the feature can actually function)
+  const isRepoPage = window.location.hostname === "github.com" && window.location.pathname.startsWith("/Dystilest/IG-Givewway-Script");
+  if (isRepoPage) {
+    GM_registerMenuCommand("🔗 Bulk Open Links", bulkOpenLinks); // Manual-only bulk open of curated giveaway list
   }
+  const isGiveawayListingPage = window.location.hostname === "www.instant-gaming.com" && /\/giveaways/.test(window.location.pathname);
+  if (isGiveawayListingPage) {
+    GM_registerMenuCommand("📋 Activate Giveaway Links", activateGiveawayLinks); // Only useful on listing pages
+  }
+
+  // Removed automatic bulk opening: now strictly manual to avoid unexpected tab spawning
+  // (v1.1.3 change)
 
 })();

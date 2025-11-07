@@ -2,13 +2,13 @@
 
 > **Intelligent automation for InstantGaming prize draws with sophisticated detection evasion**
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
+[![Version](https://img.shields.io/badge/version-1.1.3-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Userscript](https://img.shields.io/badge/userscript-Tampermonkey%20%7C%20Violentmonkey-orange.svg)](https://www.tampermonkey.net/)
 
 An advanced userscript designed for InstantGaming prize draw automation, featuring organic behavior simulation, variable timing patterns, intelligent retry mechanisms, and enhanced anti-detection capabilities.
 
-**Latest Update (v1.1.0):** Major security and anti-detection improvements including realistic click simulation, normal distribution timing, enhanced natural behavior, and memory leak prevention.
+**Latest Update (v1.1.3):** Bulk link opening is now strictly manual (no automatic tab spawning on repository pages); context-aware menu shows bulk/listing actions only where applicable; removed deprecated Auto-Join toggle.
 
 ---
 
@@ -114,9 +114,8 @@ Access controls via Tampermonkey/Violentmonkey menu (extension icon):
 |---------|----------|
 | 🎯 **Manual Entry** | Manually trigger entry submission on current page |
 | 📱 **Process Social Rewards** | Process all social reward requirements |
-| 📋 **Activate Giveaway Links** | Click all giveaway links on current page |
-| 🔗 **Bulk Open Links** | Open all GitHub giveaway collection links in new tabs |
-| ⚙️ **Switch Auto-Join Mode** | Toggle automatic entry submission |
+| 📋 **Activate Giveaway Links** | Click all giveaway links on current page (listing pages) |
+| 🔗 **Bulk Open Links** | Open curated GitHub giveaway links in new tabs (manual only; no auto on repo pages) |
 | ⚙️ **Switch Social Tasks Mode** | Toggle automatic social processing |
 | 🔔 **Switch Alert Display** | Toggle desktop notifications |
 | 🎲 **Switch Timing Variation** | Toggle random timing patterns |
@@ -254,7 +253,12 @@ IG-Givewway-Script/
 
 The script auto-updates via Tampermonkey/Violentmonkey when new releases are published.
 
-**Current Release:** 1.1.0
+**Current Release:** 1.1.3
+
+**What's New in v1.1.3:**
+- 🔗 Bulk link opening is manual-only (no auto open on repo pages)
+- 🧭 Context-aware menu: shows Bulk Open and Activate Links only when relevant
+- 🧹 Removed deprecated Auto-Join toggle from menu
 
 **What's New in v1.1.0:**
 - 🔒 Enhanced security: Referral only on giveaway pages

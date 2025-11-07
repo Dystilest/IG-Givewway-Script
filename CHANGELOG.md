@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.3] - 2025-11-07
+
+### Changed
+- Bulk link opening is now strictly manual; removed automatic invocation on repository pages to avoid surprise tab spawning.
+- Context-aware command registration: Bulk Open appears only on repository; Activate Giveaway Links only on listing pages.
+- Removed deprecated Auto-Join toggle (feature redundant with manual entry control).
+
+### Documentation
+- Updated README for version 1.1.3 (manual-only bulk open, removed Auto-Join).
+- Version badge and latest update section synchronized.
+
+### Internal
+- Cleaned settings object (removed enableAutoJoin).
+- Conditional menu command registration reduces clutter in unrelated contexts.
+
+### Notes
+- No functional features deprecated other than the Auto-Join toggle; core automation behavior unchanged.
+
+---
+
 ## [1.1.0] - 2025-11-07
 
 ### 🔒 Security
