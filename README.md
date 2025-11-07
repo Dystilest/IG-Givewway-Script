@@ -2,13 +2,13 @@
 
 > **Intelligent automation for InstantGaming prize draws with sophisticated detection evasion**
 
-[![Version](https://img.shields.io/badge/version-1.1.4-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
+[![Version](https://img.shields.io/badge/version-1.1.5-blue.svg)](https://github.com/Dystilest/IG-Givewway-Script)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Userscript](https://img.shields.io/badge/userscript-Tampermonkey%20%7C%20Violentmonkey-orange.svg)](https://www.tampermonkey.net/)
 
 An advanced userscript designed for InstantGaming prize draw automation, featuring organic behavior simulation, variable timing patterns, intelligent retry mechanisms, and enhanced anti-detection capabilities.
 
-**Latest Update (v1.1.4):** Bulk opener now fetches curated giveaway URLs directly from `links.md`; Manual Entry & Activate Links commands removed; Bulk Open prioritized and still rate-limited/staggered.
+**Latest Update (v1.1.5):** Bulk opener now opens **ALL** giveaway links from `links.md` (no 25-tab limit); staggered timing preserved for browser compatibility.
 
 ---
 
@@ -112,7 +112,7 @@ Access controls via Tampermonkey/Violentmonkey menu (extension icon):
 
 | Command | Function |
 |---------|----------|
-| 🔗 **Bulk Open Links** | Fetch & open curated giveaway URLs from `links.md` (up to 25, staggered) |
+| 🔗 **Bulk Open Links** | Fetch & open **ALL** curated giveaway URLs from `links.md` (staggered 100ms) |
 | 📱 **Process Social Rewards** | Process social reward buttons on current giveaway page |
 | ⚙️ **Switch Social Tasks Mode** | Toggle automatic social processing |
 | 🔔 **Switch Alert Display** | Toggle desktop notifications |
@@ -134,7 +134,7 @@ Timing Variation:     Enabled (Normal distribution, ±30% std dev)
 Natural Actions:      Enabled (Variable scroll patterns)
 Max Attempts:         3 retries
 Attempt Interval:     2500ms
-Rate Limiting:        25 tabs max for bulk operations
+Bulk Open Stagger:    100ms between tabs (opens all links)
 Fallback Selectors:   4 button selector alternatives
 ```
 
@@ -173,7 +173,7 @@ The script incorporates multiple advanced stealth features:
 | 10-20 entries/day | 🟡 Low | Consider slight interval increase |
 | 50+ entries/day | 🟠 Moderate | Use sparingly, blend with manual entries |
 | Timing variation disabled | 🔴 High | Always keep randomization ENABLED |
-| Bulk operations (25+ tabs) | 🟠 Moderate | Rate limited to 25 for safety |
+| Bulk operations (95+ tabs) | � Low | Staggered opening reduces browser strain |
 
 ### Recommended Practices
 
@@ -189,7 +189,7 @@ The script incorporates multiple advanced stealth features:
 - Disable timing variation or natural actions
 - Enter every available giveaway
 - Configure intervals below 1000ms (enforced minimum)
-- Try to bypass the 25-tab bulk limit
+- Disable staggered opening (hardcoded for safety)
 
 ---
 
@@ -250,7 +250,12 @@ IG-Givewway-Script/
 
 The script auto-updates via Tampermonkey/Violentmonkey when new releases are published.
 
-**Current Release:** 1.1.4
+**Current Release:** 1.1.5
+
+**What's New in v1.1.5:**
+- 🚀 Removed 25-tab limit - bulk opener now opens **ALL** giveaway links
+- ⏱️ Maintains 100ms staggered timing for browser compatibility
+- 📊 Shows total count of giveaways being opened
 
 **What's New in v1.1.4:**
 - 🔗 Bulk opener parses raw `links.md` for giveaway URLs
@@ -282,7 +287,7 @@ MIT License - Free for use, modification, and distribution.
 
 ## 🎯 Curated Giveaway Links
 
-Below are all the curated InstantGaming giveaway links maintained in [`links.md`](links.md). The **Bulk Open** command opens up to 25 of these links automatically.
+Below are all the curated InstantGaming giveaway links maintained in [`links.md`](links.md). The **Bulk Open** command opens **ALL** of these links automatically (95+ giveaways).
 
 <p align="left">
     <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/BOBLENNON?igr=jaha" target="_blank" rel="noreferrer">

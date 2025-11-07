@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.5] - 2025-11-07
+
+### Changed
+- **Removed 25-tab safety limit** - Bulk opener now opens ALL giveaway links from `links.md` (95+ giveaways).
+- Maintains 100ms staggered timing between tabs to prevent browser blocking.
+
+### Documentation
+- Updated README to reflect unlimited bulk opening.
+- Updated version badge and configuration parameters.
+- Revised risk evaluation table for bulk operations.
+
+### User Experience
+- Users can now participate in all available giveaways with a single click.
+- Total giveaway count displayed in notification.
+
+---
+
 ## [1.1.4] - 2025-11-07
 
 ### Added

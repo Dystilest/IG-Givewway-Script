@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InstantGaming Giveaway Automator
 // @description  Advanced automation tool for InstantGaming prize draws featuring intelligent detection evasion and natural interaction patterns.
-// @version      1.1.4
+// @version      1.1.5
 // @author       Dystilest
 // @namespace    https://github.com/Dystilest
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -369,7 +369,6 @@
 
   async function bulkOpenLinks() {
     try {
-      const MAX_TABS = 25; // Safety limit to prevent browser overload
       const RAW_LINKS_URL = 'https://raw.githubusercontent.com/Dystilest/IG-Givewway-Script/main/links.md';
 
       writeLog('Fetching curated giveaway links from links.md ...', 'info');
@@ -388,17 +387,12 @@
         return;
       }
 
-      const linksToOpen = hrefs.slice(0, MAX_TABS);
-      const skippedCount = hrefs.length - linksToOpen.length;
-      if (skippedCount > 0) {
-        displayNotification('Rate Limit', `Opening ${linksToOpen.length} tabs (${skippedCount} skipped for safety)`, 'warning');
-      }
-
-      linksToOpen.forEach((url, position) => {
+      // Open all links with staggered timing
+      hrefs.forEach((url, position) => {
         setTimeout(() => launchNewTab(url), position * 100);
       });
 
-      displayNotification('Bulk Operation', `Launching ${linksToOpen.length} giveaway(s) from links.md`, 'success');
+      displayNotification('Bulk Operation', `Launching ${hrefs.length} giveaway(s) from links.md`, 'success');
     } catch (exception) {
       writeLog(`Bulk link opening error: ${exception.message}`, 'error');
     }
