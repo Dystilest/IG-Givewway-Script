@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InstantGaming Giveaway Automator
 // @description  Advanced automation tool for InstantGaming prize draws featuring intelligent detection evasion and natural interaction patterns.
-// @version      1.1.1
+// @version      1.1.2
 // @author       Dystilest
 // @namespace    https://github.com/Dystilest
 // @match        *://www.instant-gaming.com/*/giveaway/*
@@ -214,9 +214,9 @@
       
       // Try multiple selectors for robustness - ordered from most specific to most general
       const selectors = [
+        "button.validate",                    // FIXED: removed .button prefix
         "button.button.validate",
         "button[class*='validate']",
-        "button.validate",
         "button[type='submit'].button",
         "button[type='submit']",
         ".giveaway-participate button",
