@@ -194,6 +194,48 @@ Below are all the curated InstantGaming giveaway links maintained in [`links.md`
     <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/RATSUPER?igr=jaha" target="_blank" rel="noreferrer">
         <img src="https://gaming-cdn.com/images/avatars/162664-1527173086.jpg" alt="Mr_RatSup3r" width="76" height="76" />
     </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/YANKA?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/17791717-1684537536.jpg" alt="Yanka" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/STREAMRUNNERS?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/15530490-1634564097.jpg" alt="StreamRunners" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/MeetTheMyth?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/911134-1650630244.jpg" alt="MeetTheMyth" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/PHENRIR?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/16050488-1638352180.jpg" alt="Phenrir Mailoki" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/GMODFR?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/15499812-1646775114.jpg" alt="Garrys Mod France" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/INSTANTGAMINGES?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/825485-1683532505.jpg" alt="Instant Gaming ES" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/ACRE?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/2550652-1614044439.jpg" alt="Acre" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/BILLYCHEROKEE?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/2072378-1604485229.jpg" alt="BillyCherokee" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/LYNX?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/2437583-1659723926.jpg" alt="Lynx" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/ZONALEROS?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/13745456-1614222765.jpg" alt="ZonaLeRoS" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/GUIGUI?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/262337-1647999658.jpg" alt="El Guigui" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/PORAID?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/5324059-1634130045.jpg" alt="Cl3ment" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/INSTANTGAMINGPT?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/16693760-1689603180.jpg" alt="InstantGamingPT" width="76" height="76" />
+    </a> 
+    <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/TOMBIE?igr=jaha" target="_blank" rel="noreferrer">
+        <img src="https://gaming-cdn.com/images/avatars/7276237-1585753188.jpg" alt="Tombie" width="76" height="76" />
+    </a> 
     <a class="giveaway" href="https://www.instant-gaming.com/fr/giveaway/FuryTV?igr=jaha" target="_blank" rel="noreferrer">
         <img src="https://gaming-cdn.com/images/avatars/2212086-1724072991.jpg" alt="Fury TV" width="76" height="76" />
     </a> 
